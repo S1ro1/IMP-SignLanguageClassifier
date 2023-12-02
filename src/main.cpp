@@ -84,7 +84,7 @@ void setup() {
   Serial.println("]");
 
   for (int i = 0; i < 26; i++) {
-    Serial.print(i);
+    Serial.print((char)(i + 64));
     Serial.print(": ");
     Serial.println(output->data.f[i], 2);
   }
