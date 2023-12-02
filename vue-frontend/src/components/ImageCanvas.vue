@@ -47,9 +47,7 @@ export default {
                 })
                 .then(response => response.arrayBuffer())
                 .then(arrBuffer => {
-                    console.log(arrBuffer);
                     const rawArr = new Uint8Array(arrBuffer);
-                    console.log(rawArr);
                     const clampedArr = new Uint8ClampedArray(rawArr.byteLength * 4);
 
                     for (let i = 0; i < rawArr.byteLength; i++) {
@@ -59,10 +57,7 @@ export default {
                         clampedArr[i * 4 + 3] = 255;
                     }
 
-                    console.log(clampedArr);
-
                     const imageData = new ImageData(clampedArr, 320, 240);
-                    console.log(imageData);
                     const canvas = document.getElementById("canvas") as HTMLCanvasElement;
                     const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
 
