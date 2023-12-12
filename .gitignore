@@ -7,3 +7,6 @@
 data
 venv
 ai/models
+.idea
+*.ipynb
+*.png

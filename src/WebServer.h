@@ -6,6 +6,7 @@
 
 #include "Camera.h"
 #include "FileSystem.h"
+#include "Model.h"
 
 using namespace std;
 
@@ -15,11 +16,12 @@ public:
     WebServer(uint16_t port = 50);
 
 private:
+    Model mModel;
     AsyncWebServer mWebServer;
     Camera mCamera;
     FileSystem mFileSystem;
 
-    void captureImage();
+    camera_fb_t* captureImage();
 };
 
 #endif

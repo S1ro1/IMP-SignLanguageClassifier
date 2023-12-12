@@ -17,3 +17,8 @@ all: build_frontend build_backend
 run: build_backend
 	@echo "Running..."
 	@pio run -e esp32cam --target monitor
+
+clean:
+	@echo "Cleaning..."
+	@pio run --target clean
+	rm -rf data/*

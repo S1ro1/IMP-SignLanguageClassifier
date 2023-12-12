@@ -3,6 +3,7 @@
 
 #include <esp_camera.h>
 
+
 /**
  * @brief A helper class for interacting with the ESP-EYE camera.
  */
@@ -29,6 +30,7 @@ public:
      * @param frameBuffer The frame buffer to clean up.
      */
     void ReleaseFrameBuffer(camera_fb_t *frameBuffer);
+
 };
 
 #endif

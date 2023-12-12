@@ -10,7 +10,7 @@
         </div>
 
         <div class="card-body">
-            <h2 id="result-text" class="card-title">{{ resultText }}</h2>
+            <h2 id="result-text" class="card-title">{{ response }}</h2>
         </div>
     </div>
 </template>
@@ -19,6 +19,12 @@
 import state from '../state'
 
 export default {
+    computed: {
+        response() {
+            console.log(this.resultText);
+            return this.resultText ? this.makeResponse(this.resultText) : 'No photo has been captured yet.';
+        }
+    },
     props: {
         capture: Boolean
     },
@@ -36,6 +42,16 @@ export default {
         };
     },
     methods: {
+        makeResponse(result: string) {
+            const numbers: number[] = JSON.parse(result);
+
+            const max = Math.max(...numbers);
+            const idx = numbers.indexOf(max);
+            const formatted_max = Math.round(max * 100) / 100;
+
+            return 'The letter is: ' + String.fromCharCode(idx + 65) + ' (' + formatted_max + ')';
+        },
+
         captureImage() {
             console.log("Capturing image...");
             fetch(state.uri + '/capture', { method: 'GET' })
